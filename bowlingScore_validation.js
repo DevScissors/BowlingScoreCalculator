@@ -48,6 +48,15 @@ function bowlingScore(bowls) {
   var ballNum = 1;
   
   for(var i = 0; frame <= 10; i++) { 
+    if(!Number.isInteger(bowlsArr[i])) {
+       throw "Number must be an integer between 0 and 10. Invalid test data." + "\nTest data: " + bowlsArr[i] + "\n";
+    }
+    if(bowlsArr[i] < 0 || bowlsArr[i] > 10){
+       throw "Invalid test data. Pins need to be between 0-10." + "\nFrame #: " + frame + "\nNumber of pins: " + bowlsArr[i] + "\n";
+    }
+    if((frameScore + bowlsArr[i]) > 10) {
+        throw "Invalid test data. Frame score can't be greater than 10." + "\nFrame score: " + (frameScore + bowlsArr[i]) + "\n";
+    }
     if((ballNum === 1) && (bowlsArr[i] === 10)) { // Checks if ball is a strike
       frame++;
       ballNum = 1; // Resetting ball to 1 since frame is over with a strike on first throw
@@ -97,11 +106,11 @@ function bowlingScore(bowls) {
 function test() {
   let games = [
     { 
-      "bowls": [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3], // Spoke to Dutch and deleted extra bowl with his consent
-      "expected": 60
+      "bowls": [3,8,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3], // Spoke to Dutch and deleted extra bowl with his consent
+      "expected": 65
     },
     {
-      "bowls": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], // Perfect score should be 300
+      "bowls": ['A', 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], // Perfect score should be 300
       "expected": 300 
     },
     {
@@ -111,13 +120,19 @@ function test() {
   ]
   
   games.forEach(function(game) {
-    
+
+    try {
     let score =  bowlingScore(game.bowls); /* fun(game.bowls) --> replace fun with your function call */
     assert.equal(score, game.expected);
+    }
+    catch (e) {
+        console.log(e);
+    }
   })
   
+  
 }
-
+console.log("");
 test();
                 
   
