@@ -114,7 +114,7 @@ function test() {
       "expected": 300 
     },
     {
-      "bowls": [2,6,5,5,8,2,10,7,2,6,2,10,6,4,3,0,7,2], // This test case adds up correctly
+      "bowls": [2,6,5,5,8,2,10,7,2,6,2,11,6,4,3,0,7,2], // This test case adds up correctly
       "expected": 127
     }
   ]
