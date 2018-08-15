@@ -48,15 +48,18 @@ function bowlingScore(bowls) {
   var ballNum = 1;
   
   for(var i = 0; frame <= 10; i++) { 
-    if(!Number.isInteger(bowlsArr[i])) {
+    if(!Number.isInteger(bowlsArr[i])) { // Checking to make sure test data is an integer
        throw "Number must be an integer between 0 and 10. Invalid test data." + "\nTest data: " + bowlsArr[i] + "\n";
     }
-    if(bowlsArr[i] < 0 || bowlsArr[i] > 10){
+    
+    if(bowlsArr[i] < 0 || bowlsArr[i] > 10){ // Checks to make sure the test data is between 0 and 10
        throw "Invalid test data. Pins need to be between 0-10." + "\nFrame #: " + frame + "\nNumber of pins: " + bowlsArr[i] + "\n";
     }
-    if((frameScore + bowlsArr[i]) > 10) {
+    
+    if((frameScore + bowlsArr[i]) > 10) { // Checks to make sure the framescore is not more than 10 which would result in invalid data
         throw "Invalid test data. Frame score can't be greater than 10." + "\nFrame score: " + (frameScore + bowlsArr[i]) + "\n";
     }
+
     if((ballNum === 1) && (bowlsArr[i] === 10)) { // Checks if ball is a strike
       frame++;
       ballNum = 1; // Resetting ball to 1 since frame is over with a strike on first throw
@@ -132,7 +135,7 @@ function test() {
   
   
 }
-console.log("");
+console.log(""); // Added new line for readability
 test();
                 
   
